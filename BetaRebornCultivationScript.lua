@@ -629,4 +629,82 @@ end, 260)
 Workspace.Npc.ChildAdded:Connect(updateNPCs)
 Players.PlayerAdded:Connect(function(p)
     p.CharacterAdded:Connect(updatePlayers)
+end)-- === Credit Panel jos lângă Settings ===
+local creditFrame = Instance.new("Frame")
+creditFrame.Size = UDim2.new(1, -20, 0, 120) -- mai înalt pentru textul de sub butoane
+creditFrame.Position = UDim2.new(0, 10, 0, 180) -- sub ultimele butoane din Settings
+creditFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+creditFrame.Parent = settingsFrame
+
+-- Titlu
+local creditLabel = Instance.new("TextLabel")
+creditLabel.Size = UDim2.new(1, 0, 0, 30)
+creditLabel.Position = UDim2.new(0, 0, 0, 0)
+creditLabel.BackgroundTransparency = 1
+creditLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+creditLabel.Text = "Credit: Marian Boss"
+creditLabel.Font = Enum.Font.SourceSansBold
+creditLabel.TextSize = 16
+creditLabel.TextScaled = true
+creditLabel.Parent = creditFrame
+
+addGlowEffect(creditLabel)
+
+-- Buton Discord
+local discordButton = Instance.new("TextButton")
+discordButton.Size = UDim2.new(0.48, 0, 0, 40)
+discordButton.Position = UDim2.new(0, 0, 0, 35)
+discordButton.BackgroundColor3 = Color3.fromRGB(85, 120, 250)
+discordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+discordButton.Text = "Discord"
+discordButton.Font = Enum.Font.SourceSansBold
+discordButton.TextSize = 16
+discordButton.Parent = creditFrame
+
+addGlowEffect(discordButton)
+
+-- Buton Telegram
+local telegramButton = Instance.new("TextButton")
+telegramButton.Size = UDim2.new(0.48, 0, 0, 40)
+telegramButton.Position = UDim2.new(0.52, 0, 0, 35)
+telegramButton.BackgroundColor3 = Color3.fromRGB(0, 180, 255)
+telegramButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+telegramButton.Text = "Telegram"
+telegramButton.Font = Enum.Font.SourceSansBold
+telegramButton.TextSize = 16
+telegramButton.Parent = creditFrame
+
+addGlowEffect(telegramButton)
+
+-- Mesaj sub butoane
+local infoLabel = Instance.new("TextLabel")
+infoLabel.Size = UDim2.new(1, 0, 0, 40)
+infoLabel.Position = UDim2.new(0, 0, 0, 80)
+infoLabel.BackgroundTransparency = 1
+infoLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+infoLabel.Text = "This script is in testing, not finished yet. Thank you for using my script!"
+infoLabel.Font = Enum.Font.SourceSans
+infoLabel.TextSize = 14
+infoLabel.TextWrapped = true
+infoLabel.TextXAlignment = Enum.TextXAlignment.Left
+infoLabel.TextYAlignment = Enum.TextYAlignment.Top
+infoLabel.Parent = creditFrame
+
+-- Funcții click pentru copiere link
+discordButton.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard("https://discord.gg/T3jPZHyG")
+        print("Discord link copied!")
+    else
+        print("setclipboard function not available.")
+    end
+end)
+
+telegramButton.MouseButton1Click:Connect(function()
+    if setclipboard then
+        setclipboard("https://t.me/Mariangg1435")
+        print("Telegram link copied!")
+    else
+        print("setclipboard function not available.")
+    end
 end)
